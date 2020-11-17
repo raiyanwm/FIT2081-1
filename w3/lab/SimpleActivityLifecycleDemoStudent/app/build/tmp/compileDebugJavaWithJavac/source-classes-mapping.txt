@@ -1,0 +1,9 @@
+edu/monash/fit2081/Testing/Lifecycles.java
+ edu.monash.fit2081.Testing.Lifecycles
+ edu.monash.fit2081.Testing.Lifecycles$1
+edu/monash/fit2081/Testing/TestPartialActivity.java
+ edu.monash.fit2081.Testing.TestPartialActivity
+edu/monash/fit2081/Testing/TestFullActivity.java
+ edu.monash.fit2081.Testing.TestFullActivity
+edu/monash/fit2081/Testing/BuildConfig.java
+ edu.monash.fit2081.Testing.BuildConfig

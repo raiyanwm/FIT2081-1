@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              >
+    <TextView
+        android:id="@+id/testIntentTextView"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:text="full hide of \nLifecycles activity"
+        android:textSize="30sp" android:textColor="@android:color/holo_orange_light"
+
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:text="shared preference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+
+        android:layout_marginTop="20dp"
+        android:onClick="getSPFromOtherActivity"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>

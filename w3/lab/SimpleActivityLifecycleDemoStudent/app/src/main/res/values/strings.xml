@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FIT2081 Lifecycles App</string>
+    <string name="labelOfViewData">view data</string>
+    <string name="labelOfNonViewData">non view data</string>
+    <string name="labelOfPersistentData">persistent data</string>
+
+    <string-array name="testList">
+        <item>Alpha, Beta, Cupcake</item>
+        <item>Donut, Eclair, Froyo</item>
+        <item>Gingerbread, Honeycomb</item>
+        <item>Ice cream sandwich</item>
+        <item>Jelly bean, Kit kat</item>
+        <item>Lollipop, Marshmallow</item>
+        <item>Nougat</item>
+    </string-array>
+</resources>

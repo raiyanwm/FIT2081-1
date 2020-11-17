@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menuItemMessage"
+          android:title="Menus have no effect"
+          android:icon="@android:drawable/ic_menu_add"
+          android:titleCondensed="Menus"
+          android:alphabeticShortcut="m" />
+    <item android:id="@+id/menuItemToast"
+          android:title="Toast"
+          android:icon="@android:drawable/ic_menu_add"
+          android:titleCondensed="do"
+          android:alphabeticShortcut="t" />
+    <item android:id="@+id/menuItemDialog"
+          android:title="Dialog"
+          android:icon="@android:drawable/ic_menu_add"
+          android:titleCondensed="ecl"
+          android:alphabeticShortcut="d" />
+    <item android:id="@+id/menuItemPartialScreen"
+          android:title="Intent (partial hide)"
+          android:icon="@android:drawable/ic_menu_add"
+          android:titleCondensed="fy"
+          android:alphabeticShortcut="p" />
+    <item android:id="@+id/menuItemFullScreen"
+          android:title="Intent (full hide)"
+          android:icon="@android:drawable/ic_menu_add"
+          android:titleCondensed="gb"
+          android:alphabeticShortcut="f" />
+    <item android:id="@+id/menuItemfinish"
+          android:title="Finish"
+          android:icon="@android:drawable/ic_menu_add"
+          android:titleCondensed="q"
+          android:alphabeticShortcut="h" />
+
+</menu>

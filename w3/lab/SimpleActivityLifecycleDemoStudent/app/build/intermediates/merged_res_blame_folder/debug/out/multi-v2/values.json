@@ -1,0 +1,64 @@
+{
+    "logs": [
+        {
+            "outputFile": "S:\\Uni\\2020\\Nov_sem\\FIT2081\\w3\\lab\\SimpleActivityLifecycleDemoStudent\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "S:\\Uni\\2020\\Nov_sem\\FIT2081\\w3\\lab\\SimpleActivityLifecycleDemoStudent\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "7,2,4,5,3",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "304,57,173,235,118",
+                        "endLines": "15,2,4,5,3",
+                        "endColumns": "19,59,60,65,53",
+                        "endOffsets": "642,112,229,296,167"
+                    },
+                    "to": {
+                        "startLines": "2,13,14,15,16",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,470,530,591,657",
+                        "endLines": "10,13,14,15,16",
+                        "endColumns": "19,59,60,65,53",
+                        "endOffsets": "385,525,586,652,706"
+                    }
+                },
+                {
+                    "source": "S:\\Uni\\2020\\Nov_sem\\FIT2081\\w3\\lab\\SimpleActivityLifecycleDemoStudent\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "115",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "17",
+                        "startColumns": "4",
+                        "startOffsets": "711",
+                        "endLines": "19",
+                        "endColumns": "12",
+                        "endOffsets": "817"
+                    }
+                },
+                {
+                    "source": "S:\\Uni\\2020\\Nov_sem\\FIT2081\\w3\\lab\\SimpleActivityLifecycleDemoStudent\\app\\src\\main\\res\\values\\dimens.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "57,97",
+                        "endColumns": "38,40",
+                        "endOffsets": "91,133"
+                    },
+                    "to": {
+                        "startLines": "11,12",
+                        "startColumns": "4,4",
+                        "startOffsets": "390,429",
+                        "endColumns": "38,40",
+                        "endOffsets": "424,465"
+                    }
+                }
+            ]
+        }
+    ]
+}

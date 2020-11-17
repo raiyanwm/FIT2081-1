@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">LoginApplication</string>
+    <string name="hint_login">Enter Username</string>
+    <string name="hint_enter_password">Enter Password</string>
+    <string name="txt_login_button">Login</string>
+
+    <string-array name="states_array">
+        <item>Australian Capital Territory</item>
+        <item>New South Wales</item>
+        <item>Northern Territory</item>
+        <item>Queensland</item>
+        <item>South Australia</item>
+        <item>Tasmania</item>
+        <item>Victoria</item>
+        <item>Western Australia</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="testList">
+        <item>Alpha, Beta, Cupcake</item>
+        <item>Donut, Eclair, Froyo</item>
+        <item>Gingerbread, Honeycomb</item>
+        <item>Ice cream sandwich</item>
+        <item>Jelly bean, Kit kat</item>
+        <item>Lollipop, Marshmallow</item>
+        <item>Nougat</item>
+    </string-array>
+    <dimen name="bigText">24sp</dimen>
+    <dimen name="smallText">18sp</dimen>
+    <string name="app_name">FIT2081 Lifecycles App</string>
+    <string name="labelOfNonViewData">non view data</string>
+    <string name="labelOfPersistentData">persistent data</string>
+    <string name="labelOfViewData">view data</string>
+    <style name="AppTheme" parent="android:Theme.Material">
+        <!-- theme customizations -->
+    </style>
+</resources>

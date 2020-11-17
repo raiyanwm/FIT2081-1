@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">JavaRevision2</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_more_listener_code">MoreListenerCodeActivity</string>
+</resources>

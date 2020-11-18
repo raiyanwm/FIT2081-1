@@ -10,7 +10,7 @@
         android:id="@+id/btnClear"
         android:layout_width="189dp"
         android:layout_height="40dp"
-        android:layout_marginTop="536dp"
+        android:layout_marginTop="440dp"
         android:layout_marginEnd="16dp"
         android:onClick="clearItem"
         android:text="Clear all items"
@@ -24,7 +24,7 @@
         android:layout_width="189dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="536dp"
+        android:layout_marginTop="440dp"
         android:layout_marginEnd="16dp"
         android:onClick="addNewItem"
         android:text="Add new item"
@@ -137,26 +137,5 @@
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCost" />
-
-    <TextView
-        android:id="@+id/tvSupplier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Supplier"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbFrozen" />
-
-    <EditText
-        android:id="@+id/etSupplier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:ems="10"
-        android:hint="Enter the Supplier"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSupplier" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -144,12 +144,4 @@ public class MainActivity extends AppCompatActivity {
         editor.clear();
         editor.apply();
     }
-
-    public void upperCase(View v){
-        String itemName = itemDetail.getString("itemName","").toUpperCase();
-        SharedPreferences.Editor edit = itemDetail.edit();
-        edit.putString("itemName",itemName);
-        edit.apply();
-        etItemName.setText(itemName);
-    }
 }

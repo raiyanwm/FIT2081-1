@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Constrained Layout</string>
+
+
+    <string name="guideline_desc_a">Button A, B and C are constrained to a vertical guideline!</string>
+    <string name="guideline_desc_b">Rating bar is constrained to a horizontal guideline!</string>
+
+
+    <string name="barrier_desc_a">Checkboxes are constrained to a vertical barrier on their left, which adjust its position unlike guideline!</string>
+</resources>

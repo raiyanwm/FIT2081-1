@@ -2,9 +2,16 @@ package com.example.warehouseinventoryapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.telephony.SmsMessage;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,9 +19,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import java.io.IOException;
-
-import static android.webkit.ConsoleMessage.MessageLevel.LOG;
+import java.util.StringTokenizer;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "LIFE_CYCLE_TRACING";
@@ -42,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         itemDetail = getSharedPreferences(FILE_NAME, MODE_PRIVATE);
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_SMS}, 0);
+        MyBroadCastReceiver myBroadCastReceiver = new MyBroadCastReceiver();
+        registerReceiver(myBroadCastReceiver, new IntentFilter(SMSReceiver.SMS_FILTER));
 
         etItemName = findViewById(R.id.etItemName);
         etQuantity = findViewById(R.id.etQuantity);
@@ -143,5 +152,30 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor =  itemDetail.edit();
         editor.clear();
         editor.apply();
+    }
+
+    public void addItemThroughSMS(String msg){
+        StringTokenizer itemInfo = new StringTokenizer(msg,";");
+
+        String itemName = itemInfo.nextToken();
+        String itemQuantity = itemInfo.nextToken();
+        String itemCost = itemInfo.nextToken();
+        String itemDescription = itemInfo.nextToken();
+        Boolean itemIsFrozen = Boolean.parseBoolean(itemInfo.nextToken());
+
+        etItemName.setText(itemName);
+        etQuantity.setText(itemQuantity);
+        etCost.setText(itemCost);
+        etDescription.setText(itemDescription);
+        tbFrozen.setChecked(itemIsFrozen);
+
+    }
+
+    class MyBroadCastReceiver extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String msg = intent.getStringExtra(SMSReceiver.SMS_MSG_KEY);
+            addItemThroughSMS(msg);
+        }
     }
 }

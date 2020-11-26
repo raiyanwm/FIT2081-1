@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
         String itemName = itemInfo.nextToken();
         String itemQuantity = itemInfo.nextToken();
-        String itemCost = itemInfo.nextToken();
+        String itemCost = String.valueOf(Double.parseDouble(itemInfo.nextToken()));
         String itemDescription = itemInfo.nextToken();
         Boolean itemIsFrozen = Boolean.parseBoolean(itemInfo.nextToken());
 

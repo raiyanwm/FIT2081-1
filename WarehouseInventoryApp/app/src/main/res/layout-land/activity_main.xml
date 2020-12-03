@@ -9,19 +9,16 @@
     <ScrollView
         android:id="@+id/svScroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="@+id/guideHorizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvItemName"
@@ -130,16 +127,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvFrozen" />
 
+            <ListView
+                android:id="@+id/listItem"
+                android:layout_width="match_parent"
+                android:layout_height="125dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal">
+                android:layout_weight="0"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnAdd"
-                    android:layout_width="170dp"
-                    android:layout_height="40dp"
+                    android:layout_width="187dp"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
@@ -153,7 +156,7 @@
                 <Button
                     android:id="@+id/btnClear"
                     android:layout_width="187dp"
-                    android:layout_height="40dp"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:onClick="clearItem"
@@ -165,8 +168,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/tbFrozen" />
             </LinearLayout>
 
-
         </LinearLayout>
+
     </ScrollView>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="50dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

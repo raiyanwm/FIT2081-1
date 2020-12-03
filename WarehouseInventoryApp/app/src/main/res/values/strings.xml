@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Warehouse Inventory App</string>
+    <string name="open_nav_view">Open</string>
+    <string name="close_nav_view">Close</string>
 </resources>

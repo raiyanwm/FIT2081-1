@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        arrayAdapter.notifyDataSetChanged();
+        //add intent to resotre data for listview
         Log.i(TAG,"onRestore");
     }
 

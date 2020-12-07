@@ -35,7 +35,7 @@
                 android:layout_marginStart="16dp"
                 android:ems="10"
                 android:hint="Enter Item Name"
-                android:inputType="textShortMessage|text"
+                android:inputType="text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvItemName" />
 

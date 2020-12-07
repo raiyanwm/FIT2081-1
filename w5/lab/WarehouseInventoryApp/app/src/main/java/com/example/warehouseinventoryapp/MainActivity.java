@@ -162,10 +162,19 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navClearList:
                     clearList();
                     break;
+                case R.id.navGetNum:
+                    getNumOfItem();
+                    break;
             }
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
+    }
+
+    private void getNumOfItem(){
+        String message = "Number of Item: %d";
+        int numOfItem = dataSource.size();
+        Toast.makeText(this, String.format(message, numOfItem),Toast.LENGTH_LONG).show();
     }
 
     /*Adding and Removing Items from List*/

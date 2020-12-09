@@ -1,0 +1,12 @@
+edu/monash/fit2081/livestockapp/StockItem.java
+ edu.monash.fit2081.livestockapp.StockItem
+edu/monash/fit2081/livestockapp/MainActivity.java
+ edu.monash.fit2081.livestockapp.MainActivity
+ edu.monash.fit2081.livestockapp.MainActivity$1
+ edu.monash.fit2081.livestockapp.MainActivity$2
+edu/monash/fit2081/livestockapp/BuildConfig.java
+ edu.monash.fit2081.livestockapp.BuildConfig
+edu/monash/fit2081/livestockapp/RecyclerAdapter.java
+ edu.monash.fit2081.livestockapp.RecyclerAdapter
+ edu.monash.fit2081.livestockapp.RecyclerAdapter$1
+ edu.monash.fit2081.livestockapp.RecyclerAdapter$ViewHolder

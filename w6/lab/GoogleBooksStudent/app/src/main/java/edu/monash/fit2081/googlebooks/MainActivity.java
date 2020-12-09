@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -23,8 +24,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    RecyclerView.Adapter adapter;
-
+    RecyclerAdapter adapter;
+    EditText keywords_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleSearchBtn(View view) {
-
+        keywords_id = findViewById(R.id.keywords_id);
+        String keywords = keywords_id.getText().toString();
+        makeRequest(keywords);
     }
 
 
@@ -79,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
                                                   // Now: all the data items are in the array list, send it to the recycler adapter to create views.
                                                   //Create a new RecyclerAdaptor and send your data to it (hint: via the constructor)
                                                   // assign (i.e. set) the adapter to the recycler view
+                                                  adapter = new RecyclerAdapter(dataItems);
+                                                  recyclerView.setAdapter(adapter);
                                               } catch (Exception e) {
                                                   Log.d("stock", e.getMessage());
                                               }

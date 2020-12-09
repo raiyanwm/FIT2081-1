@@ -21,7 +21,9 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -62,7 +64,7 @@
         app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toEndOf="@+id/keywords_id"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_search"/>
+        app:srcCompat="@android:drawable/ic_menu_search" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"

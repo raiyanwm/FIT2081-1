@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     ListView listView;
     ArrayList<String> dataSource;;
+    ArrayList<String> itemList;
     ArrayAdapter<String> arrayAdapter;
     FloatingActionButton fab;
 
@@ -106,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(new navListener());
+
+        /*W6*/
+        itemList = new ArrayList<>();
 
     }
 
@@ -161,6 +165,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.navClearList:
                     clearList();
+                    break;
+                case R.id.navListAll:
+                    listAll();
                     break;
             }
             drawerLayout.closeDrawer(GravityCompat.START);
@@ -224,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addNewItem(View v){
         addNewItem();
+        saveItemToItemList();
     }
 
     private void addNewItem(){
@@ -278,6 +286,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor =  itemDetail.edit();
         editor.clear();
         editor.apply();
+
+        //week 6
+        itemList.clear();
     }
 
     /* SMS section */
@@ -304,5 +315,17 @@ public class MainActivity extends AppCompatActivity {
             String msg = intent.getStringExtra(SMSReceiver.SMS_MSG_KEY);
             addItemThroughSMS(msg);
         }
+    }
+
+    /*Week 6*/
+    /* List all added items*/
+    private void listAll(){
+        Intent intent = new Intent(this,CardActivity.class);
+        intent.putStringArrayListExtra("itemList",itemList);
+        startActivity(intent);
+    }
+    private void saveItemToItemList(){
+         String newItem = String.format("%s;%s;%s;%s;%s",itemName,itemQuantity,itemCost,itemDescription,itemIsFrozen);
+         itemList.add(newItem);
     }
 }

@@ -14,4 +14,7 @@
     <item
         android:id="@+id/navClearList"
         android:title="Clear List" />
+    <item
+        android:id="@+id/navListAll"
+        android:title="List All Items" />
 </menu>

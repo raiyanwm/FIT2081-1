@@ -1,5 +1,6 @@
 package com.example.warehouseinventoryapp;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,10 +33,10 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.itemName.setText(data.get(position).getItemName());
-        holder.itemQuantity.setText(data.get(position).getItemQuantity());
+        holder.itemQuantity.setText(Integer.toString(data.get(position).getItemQuantity()));
         holder.itemDescription.setText(data.get(position).getItemDescription());
-        holder.itemCost.setText(data.get(position).getItemCost());
-        holder.itemIsFrozen.setText(data.get(position).isItemIsFrozen());
+        holder.itemCost.setText(Double.toString(data.get(position).getItemCost()));
+        holder.itemIsFrozen.setText(Boolean.toString(data.get(position).isItemIsFrozen()));
         Log.d("WarehouseInventory","onBindViewHolder");
 
     }

@@ -31,6 +31,7 @@ import android.widget.ToggleButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     ListView listView;
     ArrayList<String> dataSource;;
-    ArrayList<String> itemList;
+    ArrayList<Item> itemList;
     ArrayAdapter<String> arrayAdapter;
     FloatingActionButton fab;
 
@@ -321,11 +322,13 @@ public class MainActivity extends AppCompatActivity {
     /* List all added items*/
     private void listAll(){
         Intent intent = new Intent(this,CardActivity.class);
-        intent.putStringArrayListExtra("itemList",itemList);
+        Gson gson = new Gson();
+        String dbStr = gson.toJson(itemList);
+        intent.putExtra("itemList",dbStr);
         startActivity(intent);
     }
     private void saveItemToItemList(){
-         String newItem = String.format("%s;%s;%s;%s;%s",itemName,itemQuantity,itemCost,itemDescription,itemIsFrozen);
-         itemList.add(newItem);
+        Item newItem = new Item(itemName,itemQuantity,itemCost,itemDescription,itemIsFrozen);
+        itemList.add(newItem);
     }
 }

@@ -7,12 +7,12 @@ import com.google.android.material.internal.ParcelableSparseArray;
 
 public class Item{
     private String itemName,itemDescription;
-    private String itemQuantity;
-    private String itemIsFrozen;
-    private String itemCost;
+    private int itemQuantity;
+    private boolean itemIsFrozen;
+    private double itemCost;
 
 
-    public Item(String itemName, String itemQuantity, String itemCost, String itemDescription, String itemIsFrozen) {
+    public Item(String itemName, int itemQuantity, double itemCost, String itemDescription, boolean itemIsFrozen) {
         this.itemName = itemName;
         this.itemQuantity = itemQuantity;
         this.itemCost = itemCost;
@@ -28,15 +28,15 @@ public class Item{
         return itemDescription;
     }
 
-    public String getItemQuantity() {
+    public int getItemQuantity() {
         return itemQuantity;
     }
 
-    public String isItemIsFrozen() {
+    public boolean isItemIsFrozen() {
         return itemIsFrozen;
     }
 
-    public String getItemCost() {
+    public double getItemCost() {
         return itemCost;
     }
 }

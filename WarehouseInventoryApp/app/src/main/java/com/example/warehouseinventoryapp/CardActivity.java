@@ -7,14 +7,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class CardActivity extends AppCompatActivity {
 
-    ArrayList<String> itemList;
-    ArrayList<Item> data;
+    ArrayList<Item> itemList;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     ItemRecyclerAdapter adapter;
@@ -25,7 +28,6 @@ public class CardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_card);
 
         recyclerView = findViewById(R.id.my_recycler_view);
-        data = new ArrayList<>();
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -33,26 +35,17 @@ public class CardActivity extends AppCompatActivity {
         //receiving data from the MainActivity
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        itemList = bundle.getStringArrayList("itemList");
-        createItemObjects();
+        String dbString = bundle.getString("itemList");
+        createItemObjects(dbString);
         adapter = new ItemRecyclerAdapter();
-        adapter.setData(data);
+        adapter.setData(itemList);
         recyclerView.setAdapter(adapter);
     }
 
-    private void createItemObjects(){
-        String itemName, itemDescription, itemQuantity, itemCost, itemIsFrozen;
-        StringTokenizer stringTokenizer;
-        for (String item : itemList){
-            stringTokenizer = new StringTokenizer(item);
-            itemName = stringTokenizer.nextToken(";");
-            itemQuantity = stringTokenizer.nextToken(";");
-            itemCost = stringTokenizer.nextToken(";");
-            itemDescription = stringTokenizer.nextToken(";");
-            itemIsFrozen = stringTokenizer.nextToken(";");
-            Item newItem = new Item(itemName,itemQuantity,itemCost,itemDescription,itemIsFrozen);
-            data.add(newItem);
-        }
+    private void createItemObjects(String dbString){
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<Item>>(){}.getType();
+        itemList = gson.fromJson(dbString,type);
     }
 
 

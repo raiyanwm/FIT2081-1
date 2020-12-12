@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ public class CardActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     ItemRecyclerAdapter adapter;
+    Button btnClearList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class CardActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        btnClearList = findViewById(R.id.btnClearList);
         //receiving data from the MainActivity
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -55,5 +59,9 @@ public class CardActivity extends AppCompatActivity {
         }
     }
 
+    public void btnClearListClicked(View v){
+        adapter.clearData();
+        adapter.notifyDataSetChanged();
+    }
 
 }

@@ -325,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void saveItemToItemList(){
-         String newItem = String.format("%s;%s;%s;%s;%s",itemName,itemQuantity,itemCost,itemDescription,itemIsFrozen);
+         String newItem = String.format("%s ;%s ;%s ;%s ;%s",itemName,itemQuantity,itemCost,itemDescription,itemIsFrozen);
          itemList.add(newItem);
     }
 }

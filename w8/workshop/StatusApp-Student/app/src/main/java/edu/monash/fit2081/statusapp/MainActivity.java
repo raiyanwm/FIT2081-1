@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -63,6 +64,16 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                ForecastStatus deletedStatus = dataSnapshot.getValue(ForecastStatus.class);
+                Toast.makeText(getBaseContext(),deletedStatus.notifyDeletion(),Toast.LENGTH_LONG).show();
+                for (int i = 0; i < data.size(); i++){
+                    if (data.get(i).toString().equals(deletedStatus.toString())){
+                        data.remove(i);
+                        break;
+                    }
+
+                }
+                itemsAdapter.notifyDataSetChanged();
             }
 
             @Override

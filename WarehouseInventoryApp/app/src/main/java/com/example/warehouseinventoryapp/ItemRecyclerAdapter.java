@@ -37,6 +37,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
         holder.itemDescription.setText(mItems.get(position).getItemDescription());
         holder.itemCost.setText(Double.toString(mItems.get(position).getItemCost()));
         holder.itemIsFrozen.setText(Boolean.toString(mItems.get(position).isItemIsFrozen()));
+        holder.itemId.setText(Integer.toString(mItems.get(position).getId()));
         //holder.totalCost.setText(Double.toString(mItems.get(position).getTotalCost()));
         Log.d("WarehouseInventory","onBindViewHolder");
 
@@ -57,6 +58,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
         public TextView itemQuantity;
         public TextView itemIsFrozen;
         public TextView totalCost;
+        public TextView itemId;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,6 +67,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
             itemDescription = itemView.findViewById(R.id.itemDescription);
             itemQuantity = itemView.findViewById(R.id.itemQuantity);
             itemIsFrozen = itemView.findViewById(R.id.itemFrozen);
+            itemId = itemView.findViewById(R.id.itemId);
             //totalCost = itemView.findViewById(R.id.totalCost);
         }
     }

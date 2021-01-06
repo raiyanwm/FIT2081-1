@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WarehouseInventoryApp">
-        <activity android:name=".CardActivity"></activity>
+        <provider
+            android:name=".provider.ItemContentProvider"
+            android:authorities="fit2081.app.KE"
+            android:enabled="true"
+            android:exported="true"></provider>
+
+        <activity android:name=".CardActivity" />
 
         <receiver
             android:name=".SMSReceiver"

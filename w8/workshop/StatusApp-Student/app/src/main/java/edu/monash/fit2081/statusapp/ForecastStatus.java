@@ -27,4 +27,15 @@ public class ForecastStatus {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString(){
+        String text = "";
+        text = getStatus() + getTimeStamp();
+        return text;
+    }
+
+    public String notifyDeletion(){
+        return toString() + "is deleted";
+    }
 }

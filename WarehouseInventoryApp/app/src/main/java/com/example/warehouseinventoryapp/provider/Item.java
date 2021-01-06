@@ -1,15 +1,21 @@
 package com.example.warehouseinventoryapp.provider;
 
+import android.provider.BaseColumns;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import static com.example.warehouseinventoryapp.provider.Item.TABLE_NAME;
 
-@Entity(tableName = "items")
+@Entity(tableName = TABLE_NAME)
 public class Item{
+    public static final String TABLE_NAME = "items";
+    public static final String COLUMN_ID = "itemId";
+
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    @ColumnInfo(name = "itemId")
+    @ColumnInfo(name = COLUMN_ID)
     private int id;
 
     @ColumnInfo(name = "itemName")
@@ -22,8 +28,8 @@ public class Item{
     private boolean itemIsFrozen;
     @ColumnInfo(name = "itemCost")
     private double itemCost;
-    @ColumnInfo(name = "totalCost")
-    protected double totalCost; //currency is better than double
+    //@ColumnInfo(name = "totalCost")
+    //protected double totalCost; //currency is better than double
 
 
     public Item(String itemName, int itemQuantity, double itemCost, String itemDescription, boolean itemIsFrozen) {
@@ -55,9 +61,9 @@ public class Item{
         return itemCost;
     }
 
-    public double getTotalCost(){ return totalCost;}
+   // public double getTotalCost(){ return totalCost;}
 
-    public void setTotalCost(){this.totalCost = itemCost*itemQuantity;}
+    //public void setTotalCost(){this.totalCost = itemCost*itemQuantity;}
 
     public int getId(){return id;}
 

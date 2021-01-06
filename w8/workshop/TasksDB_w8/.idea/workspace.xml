@@ -2,21 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9102bf06-1b5c-4a5f-ac63-f9ea9c62ff0a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../FIT2081_notes.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../FIT2081_notes.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/java/com/example/warehouseinventoryapp/CardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/java/com/example/warehouseinventoryapp/CardActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/java/com/example/warehouseinventoryapp/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/java/com/example/warehouseinventoryapp/provider/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/java/com/example/warehouseinventoryapp/ItemRecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/java/com/example/warehouseinventoryapp/ItemRecyclerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/java/com/example/warehouseinventoryapp/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/java/com/example/warehouseinventoryapp/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/res/layout/card_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/res/layout/card_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../WarehouseInventoryApp/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WarehouseInventoryApp/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/java/com/example/warehouseinventoryapp/provider/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../WarehouseInventoryApp/app/src/main/java/com/example/warehouseinventoryapp/provider/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RoomCP_B/app/src/main/java/com/fit2081/roomcp_b/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RoomCP_B/app/src/main/java/com/fit2081/roomcp_b/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RoomCP_B/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RoomCP_B/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/TasksDB_w8.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/TasksDB_w8.app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_3_API_29]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -46,7 +49,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="TasksDB_w8.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -116,5 +119,31 @@
       <updated>1609563107008</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="93" y="93" width="1350" height="678" key="AVDManager" timestamp="1609906724643">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="93" y="93" width="1350" height="678" key="AVDManager/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1609906724643" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1609904978056">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1609904978056" />
+    <state width="1491" height="223" key="GridCell.Tab.0.bottom" timestamp="1609908192968">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1609908192968" />
+    <state width="1491" height="223" key="GridCell.Tab.0.center" timestamp="1609908192968">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="223" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1609908192968" />
+    <state width="1491" height="223" key="GridCell.Tab.0.left" timestamp="1609908192967">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="223" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1609908192967" />
+    <state width="1491" height="223" key="GridCell.Tab.0.right" timestamp="1609908192968">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="223" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1609908192968" />
   </component>
 </project>

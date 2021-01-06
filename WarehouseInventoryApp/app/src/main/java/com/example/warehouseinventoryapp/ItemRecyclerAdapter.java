@@ -1,6 +1,5 @@
 package com.example.warehouseinventoryapp;
 
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
+import com.example.warehouseinventoryapp.provider.Item;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapter.ViewHolder> {
-    ArrayList<Item> data = new ArrayList<>();
+    private List<Item> mItems;
 
-    public void setData(ArrayList<Item> data){
-        this.data = data;
+    public void setItem(List<Item> mItems){
+        this.mItems = mItems;
     }
 
     @NonNull
@@ -32,18 +32,22 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.itemName.setText(data.get(position).getItemName());
-        holder.itemQuantity.setText(Integer.toString(data.get(position).getItemQuantity()));
-        holder.itemDescription.setText(data.get(position).getItemDescription());
-        holder.itemCost.setText(Double.toString(data.get(position).getItemCost()));
-        holder.itemIsFrozen.setText(Boolean.toString(data.get(position).isItemIsFrozen()));
+        holder.itemName.setText(mItems.get(position).getItemName());
+        holder.itemQuantity.setText(Integer.toString(mItems.get(position).getItemQuantity()));
+        holder.itemDescription.setText(mItems.get(position).getItemDescription());
+        holder.itemCost.setText(Double.toString(mItems.get(position).getItemCost()));
+        holder.itemIsFrozen.setText(Boolean.toString(mItems.get(position).isItemIsFrozen()));
+        holder.totalCost.setText(Double.toString(mItems.get(position).getTotalCost()));
         Log.d("WarehouseInventory","onBindViewHolder");
 
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        if (mItems == null)
+            return 0;
+        else
+            return mItems.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -52,6 +56,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
         public TextView itemDescription;
         public TextView itemQuantity;
         public TextView itemIsFrozen;
+        public TextView totalCost;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +65,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
             itemDescription = itemView.findViewById(R.id.itemDescription);
             itemQuantity = itemView.findViewById(R.id.itemQuantity);
             itemIsFrozen = itemView.findViewById(R.id.itemFrozen);
+            totalCost = itemView.findViewById(R.id.totalCost);
         }
     }
 }

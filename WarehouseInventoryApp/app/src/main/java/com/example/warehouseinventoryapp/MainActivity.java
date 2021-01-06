@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -15,9 +16,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.telephony.SmsMessage;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,16 +28,19 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 
+import com.example.warehouseinventoryapp.provider.Item;
+import com.example.warehouseinventoryapp.provider.ItemViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "LIFE_CYCLE_TRACING";
     private static final String FILE_NAME = "ITEM_DETAILS";
+    private static final  String DEBUG = "DEBUG";
 
     //components
     EditText etItemName;
@@ -55,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigationView;
     ListView listView;
-    ArrayList<String> dataSource;;
-    ArrayList<Item> itemList;
+    ArrayList<String> dataSource;
+    //ArrayList<Item> itemList;
     ArrayAdapter<String> arrayAdapter;
     FloatingActionButton fab;
 
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean itemIsFrozen;
     private float itemCost;
 
+    //w7
+    private ItemViewModel mItemViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         setUpSharePreference();
         createInstance();
         restorePreviousItem();
+        setUpDatabase();
         Log.i(TAG,"onCreate");
     }
 
@@ -110,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new navListener());
 
         /*W6*/
-        itemList = new ArrayList<>();
+        //itemList = new ArrayList<>();
 
     }
 
@@ -168,7 +173,8 @@ public class MainActivity extends AppCompatActivity {
                     clearList();
                     break;
                 case R.id.navListAll:
-                    listAll();
+                    //listAll();
+                    listAllItemFromDatabase();
                     break;
             }
             drawerLayout.closeDrawer(GravityCompat.START);
@@ -232,7 +238,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void addNewItem(View v){
         addNewItem();
-        saveItemToItemList();
+        //saveItemToItemList();
+        saveItemToDatabase();
     }
 
     private void addNewItem(){
@@ -275,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
         etCost.setText("0.0");
         etDescription.setText("");
         tbFrozen.setChecked(false);
+
     }
 
     private void clearSavedData(){
@@ -289,7 +297,9 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
 
         //week 6
-        itemList.clear();
+        //itemList.clear();
+        //week 7
+        deleteAllItem();
     }
 
     /* SMS section */
@@ -320,15 +330,43 @@ public class MainActivity extends AppCompatActivity {
 
     /*Week 6*/
     /* List all added items*/
-    private void listAll(){
+//    private void listAll(){
+//        Intent intent = new Intent(this,CardActivity.class);
+//        Gson gson = new Gson();
+//        String dbStr = gson.toJson(itemList);
+//        intent.putExtra("itemList",dbStr);
+//        startActivity(intent);
+//    }
+//    private void saveItemToItemList(){
+//        Item newItem = new Item(itemName,itemQuantity,itemCost,itemDescription,itemIsFrozen);
+//        itemList.add(newItem);
+//    }
+
+    /* Week 7 */
+    private void setUpDatabase(){
+        mItemViewModel = new ViewModelProvider(this).get(ItemViewModel.class);
+        ItemRecyclerAdapter adapter = new ItemRecyclerAdapter();
+        mItemViewModel.getAllItem().observe(this, newData -> {
+            adapter.setItem(newData);
+            adapter.notifyDataSetChanged();
+            Log.d(DEBUG, Integer.toString(adapter.getItemCount()));
+        });
+    }
+
+    private  void saveItemToDatabase(){
+        Item newItem = new Item(itemName,itemQuantity,itemCost,itemDescription,itemIsFrozen);
+        mItemViewModel.insert(newItem);
+    }
+
+    private void deleteAllItem(){
+        mItemViewModel.deleteAll();
+    }
+
+    private void listAllItemFromDatabase(){
         Intent intent = new Intent(this,CardActivity.class);
-        Gson gson = new Gson();
-        String dbStr = gson.toJson(itemList);
-        intent.putExtra("itemList",dbStr);
         startActivity(intent);
     }
-    private void saveItemToItemList(){
-        Item newItem = new Item(itemName,itemQuantity,itemCost,itemDescription,itemIsFrozen);
-        itemList.add(newItem);
-    }
+
+    /* Week 8 */
+
 }

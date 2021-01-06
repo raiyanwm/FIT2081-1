@@ -32,7 +32,7 @@ public class Item{
         this.itemCost = itemCost;
         this.itemDescription = itemDescription;
         this.itemIsFrozen = itemIsFrozen;
-        setTotalCost();
+        //setTotalCost();
     }
 
     public String getItemName() {

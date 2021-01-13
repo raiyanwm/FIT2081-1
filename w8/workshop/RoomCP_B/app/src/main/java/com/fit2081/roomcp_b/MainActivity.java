@@ -17,7 +17,9 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     TextView tV;
     EditText etID;
-    Uri uri= Uri.parse("content://fit2081.app.KE/items");
+    public static final String CONTENT_AUTHORITY = "fit2081.app.KE";
+    public static final String STRING_URI  = "content://"+CONTENT_AUTHORITY+"/items";
+    public static final Uri CONTENT_URI = Uri.parse(STRING_URI);
 
     private String[] itemName = {"Book","Pen","Laptop"};
     private int[] itemQuantity = {10,19,2};
@@ -29,14 +31,13 @@ public class MainActivity extends AppCompatActivity {
     private String COLUMN_ITEMQUANTITY = "itemQuantity";
     private String COLUMN_ITEMISFROZEN = "itemIsFrozen";
     private String COLUMN_ITEMCOST = "itemCost";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tV=findViewById(R.id.textView_id);
 
-        Cursor result= getContentResolver().query(uri,null,null,null);
+        Cursor result= getContentResolver().query(CONTENT_URI,null,null,null);
         tV.setText(result.getCount()+"");
 
     }
@@ -50,25 +51,55 @@ public class MainActivity extends AppCompatActivity {
         values.put(COLUMN_ITEMISFROZEN,itemIsFrozen[rand.nextInt(itemIsFrozen.length)]);
         values.put(COLUMN_ITEMCOST,itemCost[rand.nextInt(itemCost.length)]);
 
-        Uri uri1 = getContentResolver().insert(uri,values);
+        Uri uri1 = getContentResolver().insert(CONTENT_URI,values);
         String id = uri1.getLastPathSegment();
         Toast.makeText(this, id, Toast.LENGTH_LONG).show();
-        Cursor result= getContentResolver().query(uri,null,null,null);
+        Cursor result= getContentResolver().query(CONTENT_URI,null,null,null);
         tV.setText(result.getCount()+"");
     }
 
     public void deleteItem(View v){
         etID = findViewById(R.id.etID);
-        String intDelete = etID.getText().toString();
+        String deleteID = etID.getText().toString();
         int uri1 = 0;
-        if (intDelete != "") {
-            Uri specificUri = Uri.parse("content://fit2081.app.KE/items/"+intDelete);
-            uri1 = getContentResolver().delete(specificUri, intDelete, null);
+        if (deleteID != "") {
+            Uri specificUri = Uri.parse(STRING_URI+"/"+deleteID);
+            uri1 = getContentResolver().delete(specificUri, deleteID, null);
         }
         else
-            uri1 = getContentResolver().delete(uri,null,null);
+            uri1 = getContentResolver().delete(CONTENT_URI,null,null);
         Toast.makeText(this, String.valueOf(uri1), Toast.LENGTH_LONG).show();
-        Cursor result= getContentResolver().query(uri,null,null,null);
+        Cursor result= getContentResolver().query(CONTENT_URI,null,null,null);
         tV.setText(result.getCount()+"");
+    }
+
+    public void doubleQuantity(View v){
+        //how to reset the id?
+        int numberOfItems = Integer.parseInt(tV.getText().toString());
+        //String idList[] = new String[numberOfItems];
+        String selectedColumn[] = {"itemId","itemQuantity"};
+        Cursor item = getContentResolver().query(CONTENT_URI,selectedColumn,null,null);
+        if (item != null) {
+            item.moveToFirst();
+            String quantity;
+            int id;
+            for (int i = 0; i < item.getCount(); i++){
+                id = item.getInt(item
+                        .getColumnIndexOrThrow("itemId"));
+                quantity = item.getString(item
+                        .getColumnIndexOrThrow("itemQuantity"));
+
+                item.moveToNext();
+                updateTable(id,Integer.parseInt(quantity)*2);
+                //System.out.println(quantity);
+            }
+            item.close();
+        }
+    }
+
+    private void updateTable(int id, int doubledQuantity){
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_ITEMQUANTITY,doubledQuantity);
+        getContentResolver().update(CONTENT_URI,values,"itemID ="+id,null);
     }
 }

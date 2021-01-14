@@ -2,4 +2,5 @@
     <string name="app_name">Country Details</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_country_details">Country Details</string>
+    <string name="title_activity_wiki_details">Wikipedia details</string>
 </resources>

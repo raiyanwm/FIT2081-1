@@ -51,6 +51,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         googleMap.getUiSettings().setMapToolbarEnabled(true);
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
         LatLng melbourne = new LatLng(-37.814, 144.96332);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(melbourne));
 
@@ -81,8 +82,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 else {
                     android.location.Address address = addresses.get(0);
                     selectedCountry = address.getCountryName();
-                    msg = "Do you want more details about " + address.getCountryName() + "?";
-                    actionFlag = true;
+                    if (selectedCountry == null) {
+                        msg = "No Country at this location!! Sorry";
+                        actionFlag = false;
+                    }
+                    else {
+                        msg = "Do you want more details about " + address.getCountryName() + "?";
+                        actionFlag = true;
+                    }
                 }
 
                 Snackbar.make(mapFragment.getView(), msg, Snackbar.LENGTH_LONG).setAction("Details", (actionFlag) ? (new ActionOnClickListener(selectedCountry)) : null).show();

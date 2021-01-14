@@ -1,5 +1,8 @@
 package edu.monash.fit2081.countryinfo;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.core.app.NavUtils;
@@ -8,11 +11,20 @@ import android.util.JsonReader;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -23,6 +35,13 @@ public class CountryDetails extends AppCompatActivity {
     private TextView code;
     private TextView population;
     private TextView area;
+
+    private TextView currencies;
+    private TextView languages;
+    private ImageView countryFlag;
+    private Button btnWiki;
+
+    private String countryName;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +58,10 @@ public class CountryDetails extends AppCompatActivity {
         code =  findViewById(R.id.country_code);
         population =  findViewById(R.id.population);
         area = findViewById(R.id.area);
+        currencies = findViewById(R.id.currencies);
+        languages = findViewById(R.id.lannguages);
+        countryFlag = findViewById(R.id.countryFlag);
+        btnWiki = findViewById(R.id.btnWiki);
 
         new GetCountryDetails().execute(selectedCountry);
     }
@@ -85,7 +108,14 @@ public class CountryDetails extends AppCompatActivity {
                                 countryInfo.setPopulation(jsonReader.nextInt());
                             } else if (keyName.equals("area")) {
                                 countryInfo.setArea(jsonReader.nextDouble());
-                            } else {
+                            } else if (keyName.equals("currencies")){
+                                countryInfo.setCurrencies(getCurrencyName(jsonReader));
+                            } else if (keyName.equals("languages")){
+                                countryInfo.setLanguages(getLanguages(jsonReader));
+                            } else if (keyName.equals("alpha2Code")){
+                                countryInfo.setAlpha2Code(jsonReader.nextString());
+                            }
+                            else {
                                 jsonReader.skipValue();
                             }
                         }
@@ -111,7 +141,10 @@ public class CountryDetails extends AppCompatActivity {
             code.setText(countryInfo.getAlpha3Code());
             population.setText(Integer.toString(countryInfo.getPopulation()));
             area.setText(Double.toString(countryInfo.getArea()));
-
+            currencies.setText(countryInfo.getCurrencies());
+            languages.setText(countryInfo.getLanguages());
+            new setImage().execute(countryInfo.getAlpha2Code());
+            btnWiki.setText("Wiki "+countryInfo.getName());
         }
     }
 
@@ -139,11 +172,18 @@ public class CountryDetails extends AppCompatActivity {
         private int population;
         private double area;
 
+        private String currencies;
+        private String languages;
+
+
+        private String alpha2Code;
+
         public String getName() {
             return name;
         }
 
         public void setName(String name) {
+            countryName = name;
             this.name = name;
         }
 
@@ -178,5 +218,99 @@ public class CountryDetails extends AppCompatActivity {
         public void setArea(double area) {
             this.area = area;
         }
+
+        public String getCurrencies() {
+            return currencies;
+        }
+
+        public void setCurrencies(String currencies) {
+            this.currencies = currencies;
+        }
+
+        public String getLanguages() {
+            return languages;
+        }
+
+        public void setLanguages(String languages) {
+            this.languages = languages;
+        }
+
+        public String getAlpha2Code() {
+            return alpha2Code;
+        }
+
+        public void setAlpha2Code(String alpha2Code) {
+            this.alpha2Code = alpha2Code;
+        }
+
+
+    }
+
+    //Week 9
+    private static String getCurrencyName (JsonReader reader) throws IOException, JSONException {
+        reader.beginArray();
+        reader.beginObject();
+        String keyName, currencies="";
+        while (reader.hasNext()) {
+            keyName = reader.nextName();
+            if (keyName.equals("name")){
+                currencies = reader.nextString();
+            }
+            else {
+                reader.skipValue();
+            }
+        }
+        reader.endObject();
+        reader.endArray();
+        return currencies;
+    }
+
+    private static String getLanguages (JsonReader reader) throws IOException{
+        reader.beginArray();
+        String keyName, languages = "";
+        while (reader.hasNext()) {
+            reader.beginObject();
+            while (reader.hasNext()) {
+                keyName = reader.nextName();
+                if (keyName.equals("name")) {
+                    languages += reader.nextString() + ", ";
+                } else
+                    reader.skipValue();
+            }
+            reader.endObject();
+        }
+        reader.endArray();
+        languages = languages.substring(0, languages.length() - 2);
+        return languages;
+    }
+
+    private class setImage extends AsyncTask<String, String, Bitmap>{
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            countryFlag.setImageBitmap(bitmap);
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... alpha2code) {
+            Bitmap image = null;
+            try {
+                URL imageUrl = new URL("https://www.countryflags.io/" + alpha2code[0] + "/flat/64.png");
+                HttpsURLConnection myConnection = (HttpsURLConnection) imageUrl.openConnection();
+                myConnection.setDoInput(true);
+                myConnection.connect();
+                InputStream input = myConnection.getInputStream();
+                image = BitmapFactory.decodeStream(input);
+            }catch (Exception e){
+                Log.i("INFO", "Error " + e.toString());
+            }
+            return image;
+        }
+
+    }
+
+    public void getWiki (View v){
+        Intent intent = new Intent(getBaseContext(),WebWiki.class);
+        intent.putExtra("countryName", countryName);
+        startActivity(intent);
     }
 }

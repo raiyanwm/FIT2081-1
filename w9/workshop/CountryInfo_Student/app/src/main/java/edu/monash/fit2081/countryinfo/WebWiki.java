@@ -18,7 +18,7 @@ public class WebWiki extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_wiki);
         getSupportActionBar().setTitle(R.string.title_activity_wiki_details);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //WHY?
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         String countryName = intent.getStringExtra("countryName");

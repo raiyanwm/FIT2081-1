@@ -290,22 +290,37 @@ public class CountryDetails extends AppCompatActivity {
             countryFlag.setImageBitmap(bitmap);
         }
 
+//        @Override
+//        protected Bitmap doInBackground(String... alpha2code) {
+//            Bitmap image = null;
+//            try {
+//                URL imageUrl = new URL("https://www.countryflags.io/" + alpha2code[0] + "/flat/64.png");
+//                HttpsURLConnection myConnection = (HttpsURLConnection) imageUrl.openConnection();
+//                myConnection.setDoInput(true);
+//                myConnection.connect();
+//                InputStream input = myConnection.getInputStream();
+//                image = BitmapFactory.decodeStream(input);
+//            }catch (Exception e){
+//                Log.i("INFO", "Error " + e.toString());
+//            }
+//            return image;
+//        }
+
         @Override
         protected Bitmap doInBackground(String... alpha2code) {
             Bitmap image = null;
-            try {
-                URL imageUrl = new URL("https://www.countryflags.io/" + alpha2code[0] + "/flat/64.png");
+            try{
+                URL imageUrl = new URL("https://flagcdn.com/256x192/" + alpha2code[0].toLowerCase() + ".png");
                 HttpsURLConnection myConnection = (HttpsURLConnection) imageUrl.openConnection();
                 myConnection.setDoInput(true);
                 myConnection.connect();
                 InputStream input = myConnection.getInputStream();
                 image = BitmapFactory.decodeStream(input);
             }catch (Exception e){
-                Log.i("INFO", "Error " + e.toString());
+                Log.i("INFO", "Error" + e.toString());
             }
             return image;
         }
-
     }
 
     public void getWiki (View v){

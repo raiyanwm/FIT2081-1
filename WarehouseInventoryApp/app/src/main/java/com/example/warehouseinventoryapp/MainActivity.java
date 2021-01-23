@@ -16,9 +16,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -71,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
     //w7
     private ItemViewModel mItemViewModel;
 
+    //w10
+    boolean hasMoved = false;
+    float downX = 0,upX =0, downY = 0, upY = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +85,22 @@ public class MainActivity extends AppCompatActivity {
         createInstance();
         restorePreviousItem();
         setUpDatabase();
+
+        //week 10
+        View constraintLayout = findViewById(R.id.constraintLayout);
+        constraintLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return touchHandler(event);
+            }
+        });
+        View linearLayout = findViewById(R.id.linearLayout);
+        linearLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return touchHandler(event);
+            }
+        });
         Log.i(TAG,"onCreate");
     }
 
@@ -367,6 +389,48 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /* Week 8 */
+    //week 10
+    private boolean touchHandler(MotionEvent event){
+        int action =event.getActionMasked();
+        if (action == MotionEvent.ACTION_DOWN){
+            downX = event.getX();
+            downY = event.getY();
+            Log.d("Gesture", "Down");
+        }
+        else if (action == MotionEvent.ACTION_MOVE && !hasMoved) {
+            hasMoved = true;
+            Log.d("Gesture", "Move");
+        }
+        else if (action == MotionEvent.ACTION_UP && hasMoved){
+            upX = event.getX();
+            upY = event.getY();
+            checkSwipe();
+            Log.d("Gesture", "Up");
+            hasMoved = false;
+        }
+        return true;
+    }
 
+    private void checkSwipe(){
+        float horizontalDisplacement = upX - downX;
+        float verticalDisplacement = upY - downY;
+        if (horizontalDisplacement < -100){
+            //left
+            resetField();
+            Log.d("Gesture", "Left");
+            Log.d("Gesture", "clear field");
+        }else if (horizontalDisplacement > 100){
+            //right
+            addNewItem();
+            saveItemToDatabase();
+            Log.d("Gesture", "Right");
+            Log.d("Gesture", "Save Item");
+        }
+        else if (verticalDisplacement < -100){
+            //up
+            listAllItemFromDatabase();
+            Log.d("Gesture", "Move Up");
+            Log.d("Gesture", "List items");
+        }
+    }
 }

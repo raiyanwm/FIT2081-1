@@ -58,7 +58,7 @@ public class CustomView extends View {
                     break;
                 case Shape.RECTANGLE:
                     Rectangle r = (Rectangle) shapes.get(i);
-                    canvas.drawRect(r.left, r.top, r.width, r.height, drawPaint);
+                    canvas.drawRect(r.left, r.top, r.left + r.width, r.top + r.height, drawPaint);
                     break;
             }
         }

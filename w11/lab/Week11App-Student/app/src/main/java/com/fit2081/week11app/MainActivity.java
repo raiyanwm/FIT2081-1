@@ -88,6 +88,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             Log.d(DEBUG,"Drawing Continuously");
             return true;
         }
+
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            view.changeColour();
+            Log.d(DEBUG,"Change Color");
+            return true;
+        }
     }
 
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener{
@@ -121,10 +129,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private void draw(){
         switch (shape2Draw){
             case Shape.CIRCLE:
-                view.addShape(new Circle(x, y, r));
+                view.addShape(new Circle(x, y, r, view.getColor()));
                 break;
             case Shape.RECTANGLE:
-                view.addShape(new Rectangle(x,y,w,h));
+                view.addShape(new Rectangle(x,y,w,h, view.getColor()));
                 break;
         }
     }

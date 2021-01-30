@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class CustomView extends View {
     public Canvas canvas;
+    public int[] colors = {Color.GREEN, Color.RED, Color.BLUE, Color.BLACK};
+    public int colorIndex = 0;
 
     ArrayList<Shape> shapes = new ArrayList<>();
 
@@ -36,7 +38,7 @@ public class CustomView extends View {
     // Setup paint with color and stroke styles
     private void setupPaint() {
         drawPaint = new Paint();
-        drawPaint.setColor(Color.GREEN);
+        drawPaint.setColor(colors[colorIndex]);
         drawPaint.setAntiAlias(true);
         drawPaint.setStrokeWidth(5);
         drawPaint.setStyle(Paint.Style.STROKE);
@@ -54,10 +56,14 @@ public class CustomView extends View {
             switch (shapeId) {
                 case Shape.CIRCLE:
                     Circle c = (Circle) shapes.get(i);
+                    setupPaint();
+                    drawPaint.setColor(c.color);
                     canvas.drawCircle(c.x, c.y, c.r, drawPaint);
                     break;
                 case Shape.RECTANGLE:
                     Rectangle r = (Rectangle) shapes.get(i);
+                    setupPaint();
+                    drawPaint.setColor(r.color);
                     canvas.drawRect(r.left, r.top, r.left + r.width, r.top + r.height, drawPaint);
                     break;
             }
@@ -82,7 +88,15 @@ public class CustomView extends View {
         invalidate();
     }
 
+    public void changeColour(){
+        if (colorIndex < colors.length-1)
+            colorIndex +=1;
+        else
+            colorIndex = 0;
+    }
 
-
+    public int getColor(){
+        return colors[colorIndex];
+    }
 
 }

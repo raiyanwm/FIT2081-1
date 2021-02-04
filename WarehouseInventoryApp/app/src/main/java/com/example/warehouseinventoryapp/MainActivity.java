@@ -26,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
     boolean hasMoved = false;
     float downX = 0,upX =0, downY = 0, upY = 0;
 
+    TextView tvName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         createInstance();
         restorePreviousItem();
         setUpDatabase();
+
+        getUser(getIntent());
 
         //week 10
         View constraintLayout = findViewById(R.id.constraintLayout);
@@ -139,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
         /*W6*/
         //itemList = new ArrayList<>();
 
+
+        tvName = findViewById(R.id.tvName);
     }
 
     private void restorePreviousItem(){
@@ -432,5 +439,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Gesture", "Move Up");
             Log.d("Gesture", "List items");
         }
+    }
+
+    private void getUser(Intent intent){
+        tvName.setText(intent.getStringExtra("username"));
     }
 }

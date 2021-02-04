@@ -12,11 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WarehouseInventoryApp">
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <provider
             android:name=".provider.ItemContentProvider"
             android:authorities="fit2081.app.KE"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
 
         <activity android:name=".CardActivity" />
 
@@ -30,13 +38,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
